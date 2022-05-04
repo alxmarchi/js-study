@@ -6,27 +6,21 @@ const quadraticEquation = (a, b, c = 0) => {
   
   let res = [];
   let D = b*b - 4*a*c;
- // console.log('D=',D);
   
   if (D < 0) return console.log('Действующих корней нет!');
   let x; 
 
   if (D === 0) {
     x = -b/2*a;
-  //  console.log('x=',x);
      res.push(x);
   }
   
   if(D > 0) {
      let x1 = (-b + Math.sqrt(D)) / (2*a);
      let x2 = (-b - Math.sqrt(D)) / (2*a);
-    // console.log('x1',x1);
-     //console.log('x2',x2);
      res.push(x1);
      res.push(x2);
    }
-  
-   console.log(res);
 
 return res;
 };
@@ -44,10 +38,13 @@ resArr.push(...quadraticEquation(6,0,-54));
 resArr.push(...quadraticEquation(1,-1));
 resArr.push(...quadraticEquation(1,0,-49));
 resArr.push(...quadraticEquation(1,-2,-24));
-console.log('resArr',resArr);
+console.log('TASK 2');
+console.log('Массив корней уровнений: ',resArr);
 
 // 3. Полученный массив разбить на 2 массива. В первый входят все числа >
 // =0, во второй остальные.
+console.log('TASK 3');
+
 const positiveArr = resArr.filter(number => number >= 0);
 const negativeArr = resArr.filter(number => number < 0);
 console.log('positiveArr',positiveArr);
@@ -55,6 +52,8 @@ console.log('negativeArr',negativeArr);
 
 // 4. Написать 2 функции. 1я должна сортировать массив по убыванию, 2я 
 // по возрастанию.
+
+// по убыванию
 const sortDesc = (arr) => {
   let stepsCount = arr.length - 1;
   let swapped;
@@ -73,6 +72,7 @@ const sortDesc = (arr) => {
   return arr;
 };
 
+// по возростанию
 const sortAsc = (arr) => {
     let stepsCount = arr.length - 1;
     let swapped;
@@ -93,9 +93,43 @@ const sortAsc = (arr) => {
 
 // 5. Отсортировать (функциями из п.4) массив (из п.3) положительных 
 // чисел по убыванию, массив отрицательных по возрастанию.
+console.log('TASK 5');
 
-const sortedDescArr = sortDesc(negativeArr);
-const sortedAscArr = sortAsc(positiveArr)
+const sortedDescArr = sortDesc(positiveArr);
+const sortedAscArr = sortAsc(negativeArr)
 
-console.log('sortedDescArr',sortedDescArr);
-console.log('sortedAscArr',sortedAscArr);
+console.log('Положительные по убыванию: ',sortedDescArr);
+console.log('Отрицательные по возрастанию: ',sortedAscArr);
+
+// 6. Конкатенировать полученные массивы.
+console.log('TASK 6');
+
+const concatedArr = sortedDescArr.concat(sortedAscArr);
+console.log(concatedArr);
+
+// 7. Написать функцию, возводящую число в квадрат.
+const squared = (x) => x*x;
+
+// 8. Получить массив, элементы которого – квадраты чисел массива из п.6.
+console.log('TASK 8');
+
+const squaredArr = concatedArr.map(elem =>squared(elem));
+console.log(squaredArr);
+
+// 9. Написать функцию, удаляющую повторяющиеся элементы.
+const dropRepeatedElems = (arr) => {
+
+  const withoutRepArr = arr.reduce((acc, el)=>{
+    if (acc.includes(el)) return acc;
+else {
+  acc.push(el);
+  return acc;
+};
+  },[]);
+return withoutRepArr;
+}
+
+// 10. Массив полученный в п.8 прогнать через функцию п.9.
+console.log('TASK 10');
+const withoutRepArr = dropRepeatedElems(squaredArr);
+console.log(withoutRepArr);
