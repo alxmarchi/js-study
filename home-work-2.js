@@ -15,3 +15,49 @@ let users = [
     { name: "Андрей", age:31},
     { name: "Света", age:25}
 ];
+
+let newUsers = [
+    { name: "Витя", age: 29 },
+    { name: "Вика", age: 24 }
+]
+users.push(...newUsers);
+
+users.forEach(user => {
+    if (user['age'] === 22) {
+        const index = users.indexOf(user);
+        users.splice(index,1);
+    }
+});
+
+const sortBy = (a,b) => {
+    if (a.age > b.age) {
+        return 1;
+    };
+
+    if (a.age === b.age) {
+       
+        if (a.name > b.name) {
+            return 1;
+        }
+
+        else return -1;
+    }
+    
+    else return -1;
+};
+
+users.sort(sortBy);
+
+// users.sort((a, b) => a.name < b.name);
+
+
+
+users.forEach(user => {
+    user['salary'] = Math.floor(0.5 + Math.random() * (100 + 1));
+});
+
+console.log(users)
+
+const summOfSalary = (obj) => {
+    
+}
