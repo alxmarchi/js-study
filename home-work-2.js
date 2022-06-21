@@ -58,6 +58,46 @@ users.forEach(user => {
 
 console.log(users)
 
-const summOfSalary = (obj) => {
-    
-}
+const summOfSalary = (arrayOfUsers) => {
+    const summ = arrayOfUsers.reduce((acc, {salary})=> {
+        return acc + salary;
+    },0)
+
+    return summ;
+};
+
+const summ = summOfSalary(users);
+console.log(summ);
+
+// 2.	Напишите функцию isObject, которая проверяет, является ли элемент именно объектом.
+
+const isObjectCheck = (element) => {
+
+    return (typeof element === 'object');
+};
+
+console.log(isObjectCheck({ name: "Петя", age: 22 }));
+
+// 3.	Напишите функцию, которая находит пересечение двух объектов и возвращает новый объект этого пересечения.
+
+const findIntersection = (obj1, obj2) => {
+
+    const intersection ={};
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+    const entries1 = Object.entries(obj1);
+    const entries2 = Object.entries(obj2);
+    //console.log(entries2)
+    for (const [key, value] of entries2) {
+
+       console.log([key, value])
+        console.log(entries2[key])
+        if (entries2[key] === value ) {
+            intersection[key] = value
+        }
+    }
+
+    return intersection;
+};
+
+console.log(findIntersection({ name: "Петя", age: 22 },{ name: "Петя22", age: 22 }))
