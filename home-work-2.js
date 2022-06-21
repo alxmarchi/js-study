@@ -29,7 +29,7 @@ users.forEach(user => {
     }
 });
 
-const sortBy = (a,b) => {
+const sortByAgeAndAlphabet = (a,b) => {
     if (a.age > b.age) {
         return 1;
     };
@@ -46,7 +46,7 @@ const sortBy = (a,b) => {
     else return -1;
 };
 
-users.sort(sortBy);
+users.sort(sortByAgeAndAlphabet);
 
 // users.sort((a, b) => a.name < b.name);
 
@@ -83,21 +83,35 @@ console.log(isObjectCheck({ name: "Петя", age: 22 }));
 const findIntersection = (obj1, obj2) => {
 
     const intersection ={};
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
     const entries1 = Object.entries(obj1);
     const entries2 = Object.entries(obj2);
-    //console.log(entries2)
-    for (const [key, value] of entries2) {
 
-       console.log([key, value])
-        console.log(entries2[key])
-        if (entries2[key] === value ) {
+    for (const [key, value] of entries1) {
+
+        if (obj2[key] === value ) {
             intersection[key] = value
         }
     }
 
+    console.log(intersection)
     return intersection;
 };
 
 console.log(findIntersection({ name: "Петя", age: 22 },{ name: "Петя22", age: 22 }))
+
+// 4.	Задачи на деструктуризацию:
+// Записать последний элемент массива в переменную head, остальные элементы в переменную tail.
+
+const [tail, ...head] = users;
+
+console.log(tail);
+console.log(head);
+
+// Дан объект вида {name:”name”, age:“age”, gender: “gender”} необходимо записать соответствующие поля записать в переменные name, age, gender.
+const user = {
+    name:"name", 
+    age:"age", 
+    gender: "gender"
+};
+
+const {name, age, gender} = user;
