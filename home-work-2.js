@@ -6,7 +6,6 @@
 // Отсортировать массив по полю age в порядке возрастания, если возраст у нескольких пользователей одинаковый их отсортировать алфавитном порядке по name.
 //     Добавить каждому пользователю поле salary типа number (значения присвоить любые).
 // Написать функцию подсчета суммы зарплат всех пользователй.
-
 let users = [
     { name: "Петя", age: 22 },
     { name: "Вася", age: 31 },
@@ -48,15 +47,9 @@ const sortByAgeAndAlphabet = (a,b) => {
 
 users.sort(sortByAgeAndAlphabet);
 
-// users.sort((a, b) => a.name < b.name);
-
-
-
 users.forEach(user => {
     user['salary'] = Math.floor(0.5 + Math.random() * (100 + 1));
 });
-
-console.log(users)
 
 const summOfSalary = (arrayOfUsers) => {
     const summ = arrayOfUsers.reduce((acc, {salary})=> {
@@ -67,10 +60,8 @@ const summOfSalary = (arrayOfUsers) => {
 };
 
 const summ = summOfSalary(users);
-console.log(summ);
 
 // 2.	Напишите функцию isObject, которая проверяет, является ли элемент именно объектом.
-
 const isObjectCheck = (element) => {
 
     return (typeof element === 'object');
@@ -79,12 +70,9 @@ const isObjectCheck = (element) => {
 console.log(isObjectCheck({ name: "Петя", age: 22 }));
 
 // 3.	Напишите функцию, которая находит пересечение двух объектов и возвращает новый объект этого пересечения.
-
 const findIntersection = (obj1, obj2) => {
-
     const intersection ={};
     const entries1 = Object.entries(obj1);
-    const entries2 = Object.entries(obj2);
 
     for (const [key, value] of entries1) {
 
@@ -92,8 +80,6 @@ const findIntersection = (obj1, obj2) => {
             intersection[key] = value
         }
     }
-
-    console.log(intersection)
     return intersection;
 };
 
@@ -101,11 +87,7 @@ console.log(findIntersection({ name: "Петя", age: 22 },{ name: "Петя22",
 
 // 4.	Задачи на деструктуризацию:
 // Записать последний элемент массива в переменную head, остальные элементы в переменную tail.
-
 const [tail, ...head] = users;
-
-console.log(tail);
-console.log(head);
 
 // Дан объект вида {name:”name”, age:“age”, gender: “gender”} необходимо записать соответствующие поля записать в переменные name, age, gender.
 const user = {
