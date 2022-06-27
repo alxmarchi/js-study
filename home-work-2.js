@@ -34,14 +34,11 @@ const sortByAgeAndAlphabet = (a,b) => {
     };
 
     if (a.age === b.age) {
-       
         if (a.name > b.name) {
             return 1;
         }
-
         else return -1;
-    }
-    
+    }  
     else return -1;
 };
 
@@ -63,7 +60,6 @@ const summ = summOfSalary(users);
 
 // 2.	Напишите функцию isObject, которая проверяет, является ли элемент именно объектом.
 const isObjectCheck = (element) => {
-
     return (typeof element === 'object');
 };
 
